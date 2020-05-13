@@ -1,8 +1,12 @@
 <template>
   <div>
-    <h1>Countries App</h1>
-    <countries-list :countries='countries'></countries-list>
-    <country-details :country='selectedCountry'></country-details>
+      <h1>Countries App</h1>
+
+      <div class="main-container">
+    
+        <countries-list :countries='countries'></countries-list>
+        <country-details :country='selectedCountry'></country-details>
+      </div>
   </div>
 </template>
 
@@ -38,5 +42,11 @@ export default {
 </script>
 
 <style>
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
 
 </style>
