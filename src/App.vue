@@ -2,11 +2,14 @@
   <div>
     <h1>Countries App</h1>
     <countries-list :countries='countries'></countries-list>
+    <country-details :country='selectedCountry'></country-details>
   </div>
 </template>
 
 <script>
 import CountriesList from './components/CountryList.vue';
+import CountryDetails from './components/CountryDetails.vue';
+import { eventBus } from './main.js';
 
 export default {
   name: 'app',
@@ -20,9 +23,14 @@ export default {
     fetch('https://restcountries.eu/rest/v2/all')
     .then(resourses => resourses.json())
     .then(countries => this.countries = countries)
+
+    eventBus.$on('country-selected', (country) => {
+      this.selectedCountry = country
+    })
   },
   components: {
-    "countries-list": CountriesList
+    "countries-list": CountriesList,
+    "country-details": CountryDetails
   }
 
 }
